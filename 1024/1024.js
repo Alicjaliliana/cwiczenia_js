@@ -1,6 +1,7 @@
 	var ROWS = 4;
 	var COLUMNS = 4;
 	var i = 0;
+	var j = 0;
 	
 function getRandom (min, max) {
 	return Math.floor(Math.random() * (max - min));
@@ -15,6 +16,16 @@ function getNumber(){
   }
   return number;
 }
+function update (numbersArray, tilesArray) {
+	for(i =0; i < COLUMNS; i++){
+		for (j=0; j < ROWS; j++) {
+			if (numbersArray[i][j] == 0)
+			{} else {
+			tilesArray[i][j].innerHTML=numbersArray[i][j];
+			}
+		}
+	}
+}
 
 function game1024(){
 	var positionTop = 0;
@@ -28,7 +39,7 @@ function game1024(){
 	for(i; i < COLUMNS; i++) {
 		tilesArray.push([]);
 		numbersArray.push([]);
-		for (var counter = 0, positionLeft =0; counter < ROWS; counter ++, positionLeft +=110) {
+		for (var counter=0, positionLeft =0; counter < ROWS; counter ++, positionLeft +=110) {
 			var nexttile = document.createElement('div');
 			nexttile.className = "tile";
 			nexttile.style.top = positionTop + "px";
@@ -55,5 +66,6 @@ function game1024(){
   numbersArray[newrow][newcolumn] = number;
   //next line uncoment only for debug
   //tilesArray[newrow][newcolumn].innerHTML = number;
-
+	
+	update (numbersArray, tilesArray);
 }
