@@ -116,46 +116,50 @@ function stepRight (board) {
 
 function moveUp(board){
 	var stepEnd = stepUp(board);
+	var ret = false;
 	if (stepEnd == false){
-		return true;
+		ret = true;
 	}
 	while( !stepEnd){
 		stepEnd = stepUp(board);
 	}
-	return false;
+	return ret;
 }
 
 function moveDown(board){
 	var stepEnd = stepDown(board);
+	var ret = false;
 	if (stepEnd == false){
-		return true;
+		ret = true;
 	}
 	while( !stepEnd){
 		stepEnd = stepDown(board);
 	}
-	return false;
+	return ret;
 }
 
 function moveRight(board){
 	var stepEnd = stepRight(board);
+	var ret = false;
 	if (stepEnd == false){
-		return true;
+		ret = true;
 	}
 	while( !stepEnd){
 		stepEnd = stepRight(board);
 	}
-	return false;
+	return ret;
 }
 
 function moveLeft(board){
 	var stepEnd = stepLeft(board);
+	var ret = false;
 	if (stepEnd == false){
-		return true;
+		ret = true;
 	}
 	while( !stepEnd){
 		stepEnd = stepLeft(board);
 	}
-	return false;
+	return ret;
 }
 
 function losujNowy(board){
@@ -227,6 +231,8 @@ function game1024(){
 	
 	var main = document.createElement('div');
 	main.id = 'main';
+	main.style.height = (110 * ROWS) + "px";
+	main.style.width = (110 * COLUMNS) + "px";
 	document.getElementsByTagName('body')[0].appendChild(main);
 	
 	for(var i = 0; i < COLUMNS; i++) {
