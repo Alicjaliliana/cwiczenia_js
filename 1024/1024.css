@@ -1,20 +1,26 @@
+@import url(http://fonts.googleapis.com/css?family=Montserrat:400,700);
 #main {
 	height: 440px;
 	width: 440px;
-	background-color: lavender;
+	background-color: cadetblue;
 	margin: auto;
 	position: relative;
 	z-index: 1;
-	border: 15px solid lavender;
+	border: 15px solid cadetblue;
 	border-radius: 10px;
 }
 .tile {
-	height: 100px;
-	width: 100px;
+	height: 80px;
+	width: 80px;
 	margin: 5px;
 	background-color: aliceblue;
 	display: inline;
 	position: absolute;
 	z-index:3;
 	border-radius: 5px;
+	font-size: 70px;
+	padding: 10px;
+	text-align: center;
+	color: darksalmon;
+	font-family: 'Montserrat', sans-serif;
 }
