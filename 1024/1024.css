@@ -18,9 +18,20 @@
 	position: absolute;
 	z-index:3;
 	border-radius: 5px;
+	padding: 10px;
+}
+.tilenew {
+	height: 80px;
+	width: 80px;
+	background-color: LightSteelBlue ;
+	display: inline;
+	z-index:4;
+	border-radius: 5px;
 	font-size: 70px;
 	padding: 10px;
 	text-align: center;
-	color: darksalmon;
+	color: cornsilk;
 	font-family: 'Montserrat', sans-serif;
-}
+	position: absolute;
+	margin: 5px;
+	}
