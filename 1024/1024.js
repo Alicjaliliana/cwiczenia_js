@@ -65,7 +65,7 @@ function stepUp (board, moved) {
 	return ret;
 }
 
-function stepDown (board) {
+function stepDown (board, moved) {
 	var ret = true;
 	for (var i = ROWS - 2; i >= 0; i--) {
 		for (var j = 0 ; j < COLUMNS; j++) {
@@ -142,7 +142,7 @@ function stepRight (board, moved) {
 	
 
 function moveUp(board){
-  var moved = [[],[],[],[]]
+  var moved = [[],[],[],[]];
   for(var i = 0; i < 4; i ++){
     for(var j = 0; j < 4; j++){
       moved[i][j] = false;
@@ -160,7 +160,7 @@ function moveUp(board){
 }
 
 function moveDown(board){
-  var moved = [[],[],[],[]]
+  var moved = [[],[],[],[]];
   for(var i = 0; i < 4; i ++){
     for(var j = 0; j < 4; j++){
       moved[i][j] = false;
@@ -179,7 +179,7 @@ function moveDown(board){
 }
 
 function moveRight(board){
-  var moved = [[],[],[],[]]
+  var moved = [[],[],[],[]];
   for(var i = 0; i < 4; i ++){
     for(var j = 0; j < 4; j++){
       moved[i][j] = false;
@@ -197,7 +197,7 @@ function moveRight(board){
 }
 
 function moveLeft(board){
-  var moved = [[],[],[],[]]
+  var moved = [[],[],[],[]];
   for(var i = 0; i < 4; i ++){
     for(var j = 0; j < 4; j++){
       moved[i][j] = false;
