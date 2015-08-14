@@ -1,4 +1,11 @@
 @import url(http://fonts.googleapis.com/css?family=Montserrat:400,700);
+#score {
+	margin: auto;
+	position: absolute;
+	font-family: 'Montserrat', sans-serif;
+	text-align: right;
+	height: 50px;
+}
 #main {
 	background-color: cadetblue;
 	margin: auto;
@@ -11,7 +18,7 @@
 	height: 80px;
 	width: 80px;
 	margin: 5px;
-	background-color: aliceblue;
+	background-color: lightcyan;
 	display: inline;
 	position: absolute;
 	z-index:3;
@@ -21,15 +28,17 @@
 .tilenew {
 	height: 80px;
 	width: 80px;
-	background-color: LightSteelBlue ;
-	display: inline;
+	background-color: LightBlue ;
+	display: flex;
 	z-index:4;
 	border-radius: 5px;
 	font-size: 70px;
 	padding: 10px;
 	text-align: center;
-	color: cornsilk;
+	color: aliceblue;
 	font-family: 'Montserrat', sans-serif;
 	position: absolute;
 	margin: 5px;
+	-webkit-justify-content: center;
+	align-items: center; 
 	}
