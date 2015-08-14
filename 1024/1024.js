@@ -40,17 +40,20 @@ function update (numbersArray, tilesArray, scoretable) {
 	scoretable.innerHTML = SCORE;
 }
 
-function stepUp (board) {
+function stepUp (board, moved) {
 	var ret = true;
 	for (var i=1; i < ROWS; i++) {
 		for (var j = 0 ; j < COLUMNS; j++) {
 			if (board[i][j] != 0){
 				if (board[i-1][j] == 0) {
+					moved[i-1][j] = moved[i][j];
+					moved[i][j] = false;
 					board[i-1][j] = board[i][j];
 					board[i][j] = 0;
 					ret = false;
 				}
-				if (board[i][j] == board[i-1][j]){
+				if (board[i][j] == board[i-1][j] && !moved[i][j]){
+					moved[i-1][j] = true;
 					board[i-1][j] *= 2;
 					board[i][j] = 0;
 					SCORE = SCORE + board[i-1][j];
@@ -68,11 +71,14 @@ function stepDown (board) {
 		for (var j = 0 ; j < COLUMNS; j++) {
 			if (board[i][j] != 0){
 				if (board[i+1][j] == 0) {
+					moved[i+1][j] = moved[i][j];
+          moved[i][j] = false;
 					board[i+1][j] = board[i][j];
 					board[i][j] = 0;
 					ret = false;
 				}
-				if (board[i][j] == board[i+1][j]){
+				if (board[i][j] == board[i+1][j] && !moved[i][j]){
+					moved[i+1][j] = true;
 					board[i+1][j] *= 2;
 					board[i][j] = 0;
 					SCORE = SCORE + board[i+1][j];
@@ -84,17 +90,20 @@ function stepDown (board) {
 	return ret;
 }
 
-function stepLeft (board) {
+function stepLeft (board, moved) {
 	var ret = true;
 	for (var i = 1; i < COLUMNS; i++) {
 		for (var j = 0; j < ROWS; j++) {
 			if(board[j][i] !=0) {
 				if (board[j][i-1] == 0) {
+					moved[j][i-1] = moved[j][i];
+					moved[j][i] = false;
 					board[j][i-1] = board[j][i];
 					board[j][i] = 0;
 					ret = false;
 				}
-				if (board[j][i] == board[j][i-1]){
+				if (board[j][i] == board[j][i-1] && !moved[j][i]){
+					moved[j][i-1] = true;
 					board[j][i-1] *= 2;
 					board[j][i] = 0;
 					SCORE = SCORE + board[j][i-1];
@@ -106,17 +115,20 @@ function stepLeft (board) {
 	return ret;
 }
 
-function stepRight (board) {
+function stepRight (board, moved) {
 	var ret = true;
 	for (var i = COLUMNS - 2; i >= 0; i--) {
 		for (var j = 0; j < ROWS; j++) {
 			if(board[j][i] !=0) {
 				if (board[j][i+1] == 0) {
+					moved[j][i+1] = moved[j][i];
+					moved[j][i] = false;
 					board[j][i+1] = board[j][i];
 					board[j][i] = 0;
 					ret = false;
 				}
-				if (board[j][i] == board[j][i+1]){
+				if (board[j][i] == board[j][i+1] && !moved[j][i]){
+          moved[j][i+1] = true;
 					board[j][i+1] *= 2;
 					board[j][i] = 0;
 					SCORE = SCORE + board[j][i+1];
@@ -130,49 +142,74 @@ function stepRight (board) {
 	
 
 function moveUp(board){
-	var stepEnd = stepUp(board);
+  var moved = [[],[],[],[]]
+  for(var i = 0; i < 4; i ++){
+    for(var j = 0; j < 4; j++){
+      moved[i][j] = false;
+    }
+  }
+	var stepEnd = stepUp(board, moved);
 	var ret = false;
 	if (stepEnd == false){
 		ret = true;
 	}
 	while( !stepEnd){
-		stepEnd = stepUp(board);
+		stepEnd = stepUp(board, moved);
 	}
 	return ret;
 }
 
 function moveDown(board){
-	var stepEnd = stepDown(board);
+  var moved = [[],[],[],[]]
+  for(var i = 0; i < 4; i ++){
+    for(var j = 0; j < 4; j++){
+      moved[i][j] = false;
+    }
+  }
+	var stepEnd = stepDown(board, moved);
 	var ret = false;
 	if (stepEnd == false){
 		ret = true;
 	}
 	while( !stepEnd){
-		stepEnd = stepDown(board);
+		stepEnd = stepDown(board, moved);
 	}
+
 	return ret;
 }
 
 function moveRight(board){
-	var stepEnd = stepRight(board);
+  var moved = [[],[],[],[]]
+  for(var i = 0; i < 4; i ++){
+    for(var j = 0; j < 4; j++){
+      moved[i][j] = false;
+    }
+  }
+	var stepEnd = stepRight(board, moved);
 	var ret = false;
 	if (stepEnd == false){
 		ret = true;
 	}
 	while( !stepEnd){
-		stepEnd = stepRight(board);
+		stepEnd = stepRight(board, moved);
 	}
 	return ret;
 }
 
 function moveLeft(board){
-	var stepEnd = stepLeft(board);
+  var moved = [[],[],[],[]]
+  for(var i = 0; i < 4; i ++){
+    for(var j = 0; j < 4; j++){
+      moved[i][j] = false;
+    }
+  }
+	var stepEnd = stepLeft(board, moved);
 	var ret = false;
 	if (stepEnd == false){
 		ret = true;
 	}
 	while( !stepEnd){
-		stepEnd = stepLeft(board);
+		stepEnd = stepLeft(board, moved);
 	}
 	return ret;
 }
@@ -214,10 +251,10 @@ function checkKey(board, tiles, scoretable) {
    var e = window.event;
    var move = false;
    if (e.keyCode == '38') {
-	  move = moveUp(board);
+      move = moveUp(board);
    }
    else if (e.keyCode == '40') {
-	  move = moveDown(board);
+      move = moveDown(board);
    }
    else if (e.keyCode == '37') {
       move = moveLeft(board);
@@ -227,8 +264,8 @@ function checkKey(board, tiles, scoretable) {
    }
    if(move){
 	  drawNew(board);
-	  if(End(board)){
-		document.getElementById('koniec').innerHTML = "YOU LOSE!";
+      if(End(board)){
+        document.getElementById('koniec').innerHTML = "YOU LOSE!";
 	  }
 	  update(board, tiles, scoretable);
    }
