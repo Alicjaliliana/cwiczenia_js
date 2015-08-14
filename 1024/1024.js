@@ -1,11 +1,12 @@
-	var ROWS = 4;
-	var COLUMNS = 4;
-	var i = 0;
-	
+var ROWS = 4;
+var COLUMNS = 4;
+var i = 0;
+var j = 0;
+       
 function getRandom (min, max) {
-	return Math.floor(Math.random() * (max - min));
+  return Math.floor(Math.random() * (max - min));
 }
-
+ 
 function getNumber(){
   var number = Math.random();
   if (number > 0.2){
@@ -16,29 +17,40 @@ function getNumber(){
   return number;
 }
 
+function update (numbersArray, tilesArray) {
+        for(i =0; i < COLUMNS; i++){
+                for (j=0; j < ROWS; j++) {
+                        if (numbersArray[i][j] == 0)
+                        {} else {
+                        tilesArray[i][j].innerHTML=numbersArray[i][j];
+                        }
+                }
+        }
+}
+ 
 function game1024(){
-	var positionTop = 0;
-	var tilesArray = []
-	var numbersArray = [];
-	
-	var main = document.createElement('div');
-	main.id = 'main';
-	document.getElementsByTagName('body')[0].appendChild(main);
-	
-	for(i; i < COLUMNS; i++) {
-		tilesArray.push([]);
-		numbersArray.push([]);
-		for (var counter = 0, positionLeft =0; counter < ROWS; counter ++, positionLeft +=110) {
-			var nexttile = document.createElement('div');
-			nexttile.className = "tile";
-			nexttile.style.top = positionTop + "px";
-			nexttile.style.left = positionLeft + "px";
-			main.appendChild(nexttile);
-			tilesArray[i].push(nexttile);
-			numbersArray[i].push(0);
-			}
-		positionTop +=110;
-	}
+        var positionTop = 0;
+        var tilesArray = []
+        var numbersArray = [];
+       
+        var main = document.createElement('div');
+        main.id = 'main';
+        document.getElementsByTagName('body')[0].appendChild(main);
+       
+        for(i; i < COLUMNS; i++) {
+                tilesArray.push([]);
+                numbersArray.push([]);
+                for (var counter=0, positionLeft =0; counter < ROWS; counter ++, positionLeft +=110) {
+                        var nexttile = document.createElement('div');
+                        nexttile.className = "tile";
+                        nexttile.style.top = positionTop + "px";
+                        nexttile.style.left = positionLeft + "px";
+                        main.appendChild(nexttile);
+                        tilesArray[i].push(nexttile);
+                        numbersArray[i].push(0);
+                        }
+                positionTop +=110;
+        }
   var row = getRandom(0,3);
   var column = getRandom(0,3);
   var number = getNumber();
@@ -55,5 +67,22 @@ function game1024(){
   numbersArray[newrow][newcolumn] = number;
   //next line uncoment only for debug
   //tilesArray[newrow][newcolumn].innerHTML = number;
-
+$('body').keydown(function (e) {
+        if(e.keyCode > 36 && e.keyCode < 41){
+                i = 0;
+                if (i>2){
+                        row = getRandom(0,3);
+                        column = getRandom(0,3);
+                        number = getNumber();
+                        while (numbersArray[row][column] !=0 ) {
+                                row = getRandom(0,3);
+                                column = getRandom(0,3);
+                        }
+                        numbersArray[row][column] = nnumber;
+                        i++
+                }
+        }
+})
+               
+        update (numbersArray, tilesArray);
 }
