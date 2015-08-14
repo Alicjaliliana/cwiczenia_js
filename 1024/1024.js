@@ -247,19 +247,43 @@ function End(board){
 	return true;
 }
 
+function mouseClick(board, tiles, scoretable, arrowsArray) {
+	var move = false;
+	for (i = 0; i < 4 ; i++) {
+		if (arrowsArray[i].onmousedown = true) {
+			move = moveUp(board);
+		} else if (arrowsArray[i].onmousedown = true) {
+			move = moveRight(board);
+		} else if (arrowsArray[i].onmousedown = true) {
+			move = moveDown(board);
+		} else if (arrowsArray[i].onmousedown = true){
+			move = moveLeft(board);
+		}
+	}
+	if(move){
+	  drawNew(board);
+      if(End(board)){
+		var lose = document.createElement('div');
+		lose.className = 'lose';
+		lose.style.height = (115 * ROWS) + "px";
+		lose.style.width = (115 * COLUMNS) + "px";
+        lose.innerHTML = "YOU LOSE!<br>YOUR SCORE IS:" + SCORE;
+		main.appendChild(lose);
+	  }
+	  update(board, tiles, scoretable);
+   }
+}
+
 function checkKey(board, tiles, scoretable) {
    var e = window.event;
    var move = false;
    if (e.keyCode == '38') {
       move = moveUp(board);
-   }
-   else if (e.keyCode == '40') {
+   } else if (e.keyCode == '40') {
       move = moveDown(board);
-   }
-   else if (e.keyCode == '37') {
+   } else if (e.keyCode == '37') {
       move = moveLeft(board);
-   }
-   else if (e.keyCode == '39') {
+   } else if (e.keyCode == '39') {
       move = moveRight(board);
    }
    if(move){
@@ -274,7 +298,6 @@ function checkKey(board, tiles, scoretable) {
 	  }
 	  update(board, tiles, scoretable);
    }
- 
 }
 
 function game1024(){
@@ -343,7 +366,8 @@ function game1024(){
 	numbersArray[newrow][newcolumn] = number;
 
 	document.body.addEventListener('keydown', function(){checkKey(numbersArray, tilesArray, scoretable)});
-	
-	
+		
 	update (numbersArray, tilesArray, scoretable);
+	
+	document.arrowstable.addEventListener('mousedown', function() {mouseClick(board, tiles, scoretable, arrowsArray)});
 }
