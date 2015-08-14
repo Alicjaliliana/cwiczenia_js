@@ -3,6 +3,7 @@ var COLUMNS = 4;
 var COLORS = ['lightblue', 'lightblue', 'lightskyblue', 'cornflowerblue', 'slateblue', 'mediumpurple', 'darkorchid', 'orchid', 'plum', 'violet', 'hotpink', 'deeppink', 'red', 'salmon', 'lightcoral', 'lightsalmon', 'tomato', 'chocolate', 'sienna', 'saddlebrown', 'maroon', 'black'];
 var SIZE = ['70px', '70px', '70', "70px", "55px", "55px", "55px", "40px", "40px", "40px", '25px', '25px', '25px', '25px', '10px', '10px'];
 var SCORE = 0;
+var ARROWS = [];
 
 function getRandom (min, max) {
   return Math.floor(Math.random() * (max - min));
@@ -18,7 +19,7 @@ function getNumber(){
   return number;
 }
 
-function update (numbersArray, tilesArray, scoretable) {
+function update (numbersArray, tilesArray, scoretable, arrows) {
 	for(var i =0; i < COLUMNS; i++){
 		for (var j=0; j < ROWS; j++) {
 			if (numbersArray[i][j] == 0){
@@ -38,6 +39,9 @@ function update (numbersArray, tilesArray, scoretable) {
 		}
 	}
 	scoretable.innerHTML = SCORE;
+	for (i=0; i <ARROWS.length; i++) {
+		arrows[i].className = ARROWS[i];
+	}
 }
 
 function stepUp (board, moved) {
@@ -247,46 +251,35 @@ function End(board){
 	return true;
 }
 
-function mouseClick(board, tiles, scoretable, arrowsArray) {
-	var move = false;
-	for (i = 0; i < 4 ; i++) {
-		if (arrowsArray[i].onmousedown = true) {
-			move = moveUp(board);
-		} else if (arrowsArray[i].onmousedown = true) {
-			move = moveRight(board);
-		} else if (arrowsArray[i].onmousedown = true) {
-			move = moveDown(board);
-		} else if (arrowsArray[i].onmousedown = true){
-			move = moveLeft(board);
-		}
+function addToHistory (kA) {
+	if (ARROWS.length < 4) {
+		ARROWS.push('');
 	}
-	if(move){
-	  drawNew(board);
-      if(End(board)){
-		var lose = document.createElement('div');
-		lose.className = 'lose';
-		lose.style.height = (115 * ROWS) + "px";
-		lose.style.width = (115 * COLUMNS) + "px";
-        lose.innerHTML = "YOU LOSE!<br>YOUR SCORE IS:" + SCORE;
-		main.appendChild(lose);
-	  }
-	  update(board, tiles, scoretable);
-   }
+	for (var i = (ARROWS.length - 2); i >= 0; i--) {
+		ARROWS[i+1] = ARROWS[i];
+	}
+	ARROWS[0] = kA;
 }
-
-function checkKey(board, tiles, scoretable) {
+	
+function checkKey(board, tiles, scoretable, arrows) {
    var e = window.event;
    var move = false;
+   var keyArrow;
    if (e.keyCode == '38') {
       move = moveUp(board);
+	  keyArrow = 'upArrow';
    } else if (e.keyCode == '40') {
       move = moveDown(board);
+	  keyArrow = 'downArrow';
    } else if (e.keyCode == '37') {
       move = moveLeft(board);
+	  keyArrow = 'leftArrow';
    } else if (e.keyCode == '39') {
       move = moveRight(board);
+	  keyArrow = 'rightArrow';
    }
    if(move){
+	  addToHistory(keyArrow);
 	  drawNew(board);
       if(End(board)){
 		var lose = document.createElement('div');
@@ -296,7 +289,7 @@ function checkKey(board, tiles, scoretable) {
         lose.innerHTML = "YOU LOSE!<br>YOUR SCORE IS:" + SCORE;
 		main.appendChild(lose);
 	  }
-	  update(board, tiles, scoretable);
+	  update(board, tiles, scoretable, arrows);
    }
 }
 
@@ -304,8 +297,7 @@ function game1024(){
 	var positionTop = 0;
 	var tilesArray = []
 	var numbersArray = [];
-	var arrowsArray =[];
-	var arrowsImage=['http://png-3.findicons.com/files/icons/2219/dot_pictograms/256/arrow_up_2.png', 'http://png-4.findicons.com/files/icons/2219/dot_pictograms/256/arrow_right_2.png', 'http://png-1.findicons.com/files/icons/2219/dot_pictograms/256/arrow_down_2.png', 'http://png-4.findicons.com/files/icons/2219/dot_pictograms/256/arrow_left_2.png'];
+	var arrows = [];
 	
 	var scoring = document.createElement('div');
 	scoring.id = 'score';
@@ -322,22 +314,18 @@ function game1024(){
 	main.style.width = (110 * COLUMNS) + "px";
 	document.getElementsByTagName('body')[0].appendChild(main);
 	
-	var arrowstable = document.createElement('div');
-	arrowstable.id = "aTable";
-	arrowstable.style.height = (110 * ROWS ) + "px";
-	arrowstable.style.width = 110 + "px";
-	document.getElementsByTagName('body')[0].appendChild(arrowstable);
-	for (var i=0, positionTop=0; i<4; i++, positionTop+=110) {
+	var arrowHistory = document.createElement('div');
+	arrowHistory.id = 'aTable';
+	document.getElementsByTagName('body')[0].appendChild(arrowHistory);
+	for(var i = 0, positionTop = 0; i < COLUMNS; i++, positionTop +=110) {
 		var arrow = document.createElement('div');
 		arrow.className = "arrow";
 		arrow.style.top = positionTop + "px";
-		arrowstable.appendChild(arrow);
-		arrowsArray.push(arrow);
-		arrowsArray[i].innerHTML = "<img src ='" + arrowsImage[i] +"' style='height:100%; width:100%;'>";
+		arrowHistory.appendChild(arrow);
+		arrows.push(arrow);
 	}
+	
 		
-	
-	
 	for(var i = 0, positionTop = 0; i < COLUMNS; i++, positionTop +=110) {
 		tilesArray.push([]);
 		numbersArray.push([]);
@@ -365,9 +353,7 @@ function game1024(){
 	var number = getNumber();
 	numbersArray[newrow][newcolumn] = number;
 
-	document.body.addEventListener('keydown', function(){checkKey(numbersArray, tilesArray, scoretable)});
+	document.body.addEventListener('keydown', function(){checkKey(numbersArray, tilesArray, scoretable, arrows)});
 		
-	update (numbersArray, tilesArray, scoretable);
-	
-	document.arrowstable.addEventListener('mousedown', function() {mouseClick(board, tiles, scoretable, arrowsArray)});
+	update(numbersArray, tilesArray, scoretable, arrows);
 }
