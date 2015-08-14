@@ -14,6 +14,7 @@
 	z-index: 1;
 	border: 15px solid cadetblue;
 	border-radius: 10px;
+	overflow: hidden;
 }
 .tile {
 	height: 80px;
@@ -56,3 +57,47 @@
 	display: inline;
 	margin-top: -5px;
 }
+.lose {
+	background-color: rgba(0, 0, 0, 0.5);
+	color: lightcyan;
+	font-size: 50px;
+	position: relative;
+	margin: 0;
+	padding: 0;
+	display: flex;
+	-webkit-justify-content: center;
+	align-items: center; 
+	text-align: center;
+	font-family: 'Montserrat', sans-serif;
+	z-index: 500;
+}
+#aTable{
+	background-color: cadetblue;
+	position: absolute;
+	z-index: 1;
+	border: 15px solid cadetblue;
+	border-radius: 10px;
+	overflow: hidden;
+	display: inline;
+	top: 75px;
+	left: 550px;
+}
+.arrow {
+	height: 80px;
+	width: 80px;
+	background-color: Lightcyan;
+	display: flex;
+	z-index:4;
+	border-radius: 5px;
+	font-size: 70px;
+	padding: 10px;
+	text-align: center;
+	color: aliceblue;
+	font-family: 'Montserrat', sans-serif;
+	position: absolute;
+	margin: 5px;
+	-webkit-justify-content: center;
+	align-items: center; 
+	background-size: 100%;
+}
+	

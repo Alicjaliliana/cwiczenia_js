@@ -72,7 +72,7 @@ function stepDown (board) {
 			if (board[i][j] != 0){
 				if (board[i+1][j] == 0) {
 					moved[i+1][j] = moved[i][j];
-          moved[i][j] = false;
+					moved[i][j] = false;
 					board[i+1][j] = board[i][j];
 					board[i][j] = 0;
 					ret = false;
@@ -265,7 +265,12 @@ function checkKey(board, tiles, scoretable) {
    if(move){
 	  drawNew(board);
       if(End(board)){
-        document.getElementById('koniec').innerHTML = "YOU LOSE!";
+		var lose = document.createElement('div');
+		lose.className = 'lose';
+		lose.style.height = (115 * ROWS) + "px";
+		lose.style.width = (115 * COLUMNS) + "px";
+        lose.innerHTML = "YOU LOSE!<br>YOUR SCORE IS:" + SCORE;
+		main.appendChild(lose);
 	  }
 	  update(board, tiles, scoretable);
    }
@@ -276,6 +281,8 @@ function game1024(){
 	var positionTop = 0;
 	var tilesArray = []
 	var numbersArray = [];
+	var arrowsArray =[];
+	var arrowsImage=['http://png-3.findicons.com/files/icons/2219/dot_pictograms/256/arrow_up_2.png', 'http://png-4.findicons.com/files/icons/2219/dot_pictograms/256/arrow_right_2.png', 'http://png-1.findicons.com/files/icons/2219/dot_pictograms/256/arrow_down_2.png', 'http://png-4.findicons.com/files/icons/2219/dot_pictograms/256/arrow_left_2.png'];
 	
 	var scoring = document.createElement('div');
 	scoring.id = 'score';
@@ -286,14 +293,29 @@ function game1024(){
 	scoretable.id = "sTable";
 	scoring.appendChild(scoretable);
 	
-	
 	var main = document.createElement('div');
 	main.id = 'main';
 	main.style.height = (110 * ROWS) + "px";
 	main.style.width = (110 * COLUMNS) + "px";
 	document.getElementsByTagName('body')[0].appendChild(main);
 	
-	for(var i = 0; i < COLUMNS; i++) {
+	var arrowstable = document.createElement('div');
+	arrowstable.id = "aTable";
+	arrowstable.style.height = (110 * ROWS ) + "px";
+	arrowstable.style.width = 110 + "px";
+	document.getElementsByTagName('body')[0].appendChild(arrowstable);
+	for (var i=0, positionTop=0; i<4; i++, positionTop+=110) {
+		var arrow = document.createElement('div');
+		arrow.className = "arrow";
+		arrow.style.top = positionTop + "px";
+		arrowstable.appendChild(arrow);
+		arrowsArray.push(arrow);
+		arrowsArray[i].innerHTML = "<img src ='" + arrowsImage[i] +"' style='height:100%; width:100%;'>";
+	}
+		
+	
+	
+	for(var i = 0, positionTop = 0; i < COLUMNS; i++, positionTop +=110) {
 		tilesArray.push([]);
 		numbersArray.push([]);
 		for (var counter=0, positionLeft =0; counter < ROWS; counter ++, positionLeft +=110) {
@@ -305,7 +327,6 @@ function game1024(){
 			tilesArray[i].push(nexttile);
 			numbersArray[i].push(0);
 			}
-		positionTop +=110;
 	}
 	
 	var row = getRandom(0,ROWS);
