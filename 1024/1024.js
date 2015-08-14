@@ -1,10 +1,12 @@
 var ROWS = 4;
 var COLUMNS = 4;
-	
-function getRandom (min, max) {
-	return Math.floor(Math.random() * (max - min));
-}
+       
 
+
+function getRandom (min, max) {
+  return Math.floor(Math.random() * (max - min));
+}
+ 
 function getNumber(){
   var number = Math.random();
   if (number > 0.2){
