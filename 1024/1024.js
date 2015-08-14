@@ -2,7 +2,7 @@ var ROWS = 4;
 var COLUMNS = 4;
 var COLORS = ['lightblue', 'lightblue', 'lightskyblue', 'cornflowerblue', 'slateblue', 'mediumpurple', 'darkorchid', 'orchid', 'plum', 'violet', 'hotpink', 'deeppink', 'red', 'salmon', 'lightcoral', 'lightsalmon', 'tomato', 'chocolate', 'sienna', 'saddlebrown', 'maroon', 'black'];
 var SIZE = ['70px', '70px', '70', "70px", "55px", "55px", "55px", "40px", "40px", "40px", '25px', '25px', '25px', '25px', '10px', '10px'];
-var POINTS = 0;
+var SCORE = 0;
 
 function getRandom (min, max) {
   return Math.floor(Math.random() * (max - min));
@@ -18,7 +18,7 @@ function getNumber(){
   return number;
 }
 
-function update (numbersArray, tilesArray, POINTS) {
+function update (numbersArray, tilesArray, scoretable) {
 	for(var i =0; i < COLUMNS; i++){
 		for (var j=0; j < ROWS; j++) {
 			if (numbersArray[i][j] == 0){
@@ -37,6 +37,7 @@ function update (numbersArray, tilesArray, POINTS) {
 			}
 		}
 	}
+	scoretable.innerHTML = SCORE;
 }
 
 function stepUp (board) {
@@ -52,7 +53,7 @@ function stepUp (board) {
 				if (board[i][j] == board[i-1][j]){
 					board[i-1][j] *= 2;
 					board[i][j] = 0;
-					POINTS = POINTS + board[i-1][j];
+					SCORE = SCORE + board[i-1][j];
 					ret = false;
 				}
 			}
@@ -74,7 +75,7 @@ function stepDown (board) {
 				if (board[i][j] == board[i+1][j]){
 					board[i+1][j] *= 2;
 					board[i][j] = 0;
-					POINTS = POINTS + board[i+1][j];
+					SCORE = SCORE + board[i+1][j];
 					ret = false;
 				}
 			}
@@ -96,7 +97,7 @@ function stepLeft (board) {
 				if (board[j][i] == board[j][i-1]){
 					board[j][i-1] *= 2;
 					board[j][i] = 0;
-					POINTS = POINTS + board[j][i-1];
+					SCORE = SCORE + board[j][i-1];
 					ret = false;
 				}
 			}
@@ -118,7 +119,7 @@ function stepRight (board) {
 				if (board[j][i] == board[j][i+1]){
 					board[j][i+1] *= 2;
 					board[j][i] = 0;
-					POINTS = POINTS + board[j][i+1];
+					SCORE = SCORE + board[j][i+1];
 					ret = false;
 				}
 			}
@@ -209,7 +210,7 @@ function End(board){
 	return true;
 }
 
-function checkKey(board, tiles) {
+function checkKey(board, tiles, scoretable) {
    var e = window.event;
    var move = false;
    if (e.keyCode == '38') {
@@ -229,7 +230,7 @@ function checkKey(board, tiles) {
 	  if(End(board)){
 		document.getElementById('koniec').innerHTML = "YOU LOSE!";
 	  }
-	  update(board, tiles);
+	  update(board, tiles, scoretable);
    }
  
 }
@@ -239,11 +240,14 @@ function game1024(){
 	var tilesArray = []
 	var numbersArray = [];
 	
-	var score = document.createElement('div');
-	score.id = 'score';
-	score.style.left = (110 * COLUMNS) + "px";
-	score.innerHTML = "SCORE &nbsp; &nbsp; &nbsp;<div style='display: inline; width: 110px; background-color: cadetblue; color: aliceblue; float: right; border-radius: 5px; border: 3px solid cadetblue;'>" + POINTS + "</div>";
-	document.getElementsByTagName('body')[0].appendChild(score);
+	var scoring = document.createElement('div');
+	scoring.id = 'score';
+	scoring.style.left = (110 * COLUMNS /2.7) + "px";
+	scoring.innerHTML = "SCORE &nbsp;&nbsp;&nbsp;"
+	document.getElementsByTagName('body')[0].appendChild(scoring);
+	var scoretable = document.createElement('div');
+	scoretable.id = "sTable";
+	scoring.appendChild(scoretable);
 	
 	
 	var main = document.createElement('div');
@@ -280,8 +284,8 @@ function game1024(){
 	var number = getNumber();
 	numbersArray[newrow][newcolumn] = number;
 
-	document.body.addEventListener('keydown', function(){checkKey(numbersArray, tilesArray)});
+	document.body.addEventListener('keydown', function(){checkKey(numbersArray, tilesArray, scoretable)});
 	
 	
-	update (numbersArray, tilesArray, POINTS);
+	update (numbersArray, tilesArray, scoretable);
 }
