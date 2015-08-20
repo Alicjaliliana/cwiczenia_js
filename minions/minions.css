@@ -1,0 +1,154 @@
+body {
+	min-width: 400px;
+	padding: 30px;
+}
+#menu {
+	position: absolute;
+	width: 20%;
+	min-width: 200px;
+	border: 1px solid silver;
+	border-radius: 5px;
+
+}
+
+
+#kevin {
+	background-image: url('kevin.jpg');
+	background-size: contain;
+	background-repeat: no-repeat;
+}
+#stuart{
+	background-image: url('stuart.jpg');
+	background-size: cover;
+}
+#bob{
+	background-image: url('bob.jpg');
+	background-size: cover;
+}
+#dave {
+	background-image: url('dave.png');
+	background-size: cover;
+}
+#margo {
+	background-image: url('margo.jpg');
+	background-size: contain;
+	background-repeat: no-repeat;
+}
+#edith {
+	background-image: url('edith.jpg');
+	background-size: contain;
+	background-repeat: no-repeat;
+}
+#agnes {
+	background-image: url('agnes.jpg');
+	background-size: contain;
+	background-repeat: no-repeat;
+}
+#gru {
+	background-image: url('gru.jpg');
+	background-size: contain;
+	background-repeat: no-repeat;
+}
+#Lucy {
+	background-image: url('lucy.jpg');
+	background-size: contain;
+	background-repeat: no-repeat;
+}
+.picture{
+	width: 200px;
+	height: 200px;
+	margin: auto;
+}
+.minion {
+	width: 22%;
+	float: left;
+	border: 2px solid silver;
+	border-bottom: 10px solid silver;
+	border-radius: 10px;
+	margin-left: 30px;
+	min-width: 220px;
+	box-shadow: 10px 10px 5px #E6E6E6;
+	margin-bottom: 30px;
+}
+.underminion {
+	text-align: justify;
+	padding: 10px;
+	border-top: 1px solid silver;
+}
+#content {
+	margin-left: 25%;
+}
+.name {
+	text-align: center;
+	vertical-align: middle;
+	padding-bottom: auto;
+	font-size: 45px;
+	color: #fff;
+	background-color: silver;
+	text-transform: uppercase;
+}
+.article {
+	font-size: 18px;
+	width: 80%;
+	min-width: 200px;
+	text-align: justify;
+	padding: 10px;
+	margin-bottom: 20px;
+	display: relative;
+	margin-left: auto;
+	margin-right: auto;
+}
+#home {
+	width:75%;
+	height: 100%;
+	background-image: url('minions.jpg');
+	background-size: 100%;
+	background-repeat: no-repeat;
+	margin-left: 25%;
+}
+.column {
+	width: 40%;
+	margin: 0px 35px 0px 35px;
+	float: left;
+	margin-bottom: 50px;
+	}
+
+
+@media screen and (max-width: 800px) {
+    #menu{
+        border: none;
+		margin-left: auto;
+		margin-right: auto;
+		float: none;
+		position: relative;
+		padding: 0px;
+		width:60%;
+		min-width: 370px;
+		
+    }
+	.nav-stacked>li{
+		float: left;
+		margin-top: 0px;
+		margin-left:5px;
+		margin-right:5px;
+	}
+	.nav-stacked>li+li{
+		float: left;
+		margin-top: 0px;
+		margin-left:5px;
+		margin-right:5px;
+	}
+	#content {
+	margin-left: 0px;
+}
+#home {
+	width:100%;
+	height: 100%;
+	min-width: 200px;
+	background-image: url('minions.jpg');
+	background-size: 100%;
+	background-repeat: no-repeat;
+	margin-left: 0px;
+	margin-top: 25px;	
+}
+}
