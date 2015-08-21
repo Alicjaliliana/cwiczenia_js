@@ -29,7 +29,7 @@ nav li:first-child{
 	border-left: 1px solid #fff;
 	margin-left: 20%;
 }
-nav>li:active{
+nav ul li:active{
 	background-color: #700070;
 }
 a {
@@ -38,6 +38,9 @@ a {
 }
 ul{
 	margin: 0px;
+}
+#menu-480{
+	display: none;
 }
 @media only screen and (min-width: 481px) and (max-width: 768px) {
 	nav li{
@@ -52,12 +55,16 @@ ul{
 	ul {
 		padding: 0px;
 	}
+	#menu-480{
+		display: none;
+	}
 }
 @media only screen and (max-width: 480px) {
 	nav li{
 		display: block;
 		border: none;
 		margin: auto;
+		width: 100%;
 	}
 	nav li:first-child{
 		margin-left: auto;
@@ -66,4 +73,26 @@ ul{
 	ul {
 		padding: 0px;
 	}
+	#menu-768{
+		display:none;
+	}
+	#menu-480{
+		display: inherit;
+	}
+	#menu-480 ul{
+		display: none;
+	}
+	#menu-480 li li:nth-child(1) {
+		margin-top:15px;
+	}
+	#menu-480 li:hover > ul {
+		display: block;
+	}
+	#menu-480 li:active {
+		background-color: #800080
+	}
+	#menu-480 li ul li:active{
+		background-color: #700070;
+	{
+
 }
