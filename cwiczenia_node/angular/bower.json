@@ -1,0 +1,19 @@
+{
+  "name": "angular",
+  "homepage": "https://github.com/Alicjaliliana/cwiczenia_js",
+  "authors": [
+    "aliceblue <alicja0wojcik@gmail.com>"
+  ],
+  "description": "",
+  "main": "",
+  "moduleType": [],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
