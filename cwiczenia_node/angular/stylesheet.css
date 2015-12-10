@@ -1,0 +1,38 @@
+.img-container{
+	width: 200px;
+	height: 200px;
+	overflow: hidden;
+	background-position: -39px -10px;
+	background-size: 150%;
+}
+.footnote {
+	width: 100%;
+	text-align: right;
+	font-size: 13px;
+}	
+.footnote h4{
+	text-align: left;
+	font-size:16px;
+}
+ul li {
+	display: inline-block;
+	list-style-type: none;
+	margin: 15px 2%;
+}
+ul {
+	margin: 2% 15%;
+}
+.container ul li .opened {
+	display: none;
+	}
+.container ul li:hover > .opened {
+	display: block;
+	z-index: 100;
+	overflow: visible;
+	width: 200%;
+	height: 200%;
+	background-position: 0 0;
+	background-size: 100%;
+	background-color: #000;
+	position: absolute;
+}

@@ -1,0 +1,15 @@
+
+		<div class = "container col-sm-12">
+		<ul>
+			<li ng-repeat="image in images" class = "col-sm-2">
+				<a href="#"></a>
+					<div class = "img-container"  style ="background-image: url('{{image.source}}');"}></div>
+					<div class = "opened" style = "background-image: url('{{image.link}}');"></div>
+				<div class = "footnote">
+					<h4>{{image.name}}</h4>
+					<p>{{image.date}} </p>
+				</div>
+				
+			</li>
+		</ul>	
+		</div>
