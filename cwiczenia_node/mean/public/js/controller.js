@@ -1,16 +1,18 @@
-var app = angular.module('blog', []);
+var ctrl = angular.module('ctrl', []);
 
-app.controller('blogpostlist', function ($scope) {
-$scope.posts = [{'title': 'About me',
-		 'description': 'A gantle introduction to my blog',
-		 'category': 'me',
-		 'content' : 'Lorem ipsum doler sit et centra etc...'},
-                {'title': 'About me',
-		 'description': 'A gantle introduction to my blog',
-		 'category': 'me',
-		 'content' : 'Lorem ipsum doler sit et centra etc...'},
-		 ];
-
+ctrl.controller('blogpostlist', function ($scope, $http) {
+	$http.get('/allposts').success(function (data) {
+		console.log('data received');
+		$scope.posts = data;
+	});
 });
 
-
+ctrl.controller('submitNewPost', function ($scope, $http) {
+	$scope.newpost = "";
+	$scope.submitNewPost = function(){
+		console.log($scope.newpost.content);
+		$http.post('/admin', $scope.newpost).success(function (data) {
+			console.log(data);
+		});
+	};
+});

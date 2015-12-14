@@ -7,14 +7,16 @@
   ],
   "license": "MIT",
   "homepage": "https://github.com/Alicjaliliana/cwiczenia_js",
-  "moduleType": [
-    "node"
-  ],
+  "moduleType": [],
   "ignore": [
     "**/.*",
     "node_modules",
     "bower_components",
     "test",
     "tests"
-  ]
+  ],
+  "dependencies": {
+    "angular-route": "~1.4.8",
+    "bootstrap": "~3.3.6"
+  }
 }
