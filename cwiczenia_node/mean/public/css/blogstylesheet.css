@@ -1,0 +1,26 @@
+@import url(https://fonts.googleapis.com/css?family=Candal|Alice);
+
+ul {
+	padding-left: 0;
+}
+
+li {
+	font-size: 14px;
+	list-style: none;
+	font-family: "Alice", sans;
+	margin-bottom: 50px;
+}
+.title {
+	font-size: 24px;
+	line-height: 22px;
+	font-family: 'Candal', sans-serif;
+	margin-bottom: 20px;
+}
+.category {
+	font-size: 11px;
+	text-decoration: italic;
+}
+.container {
+	margin-top: 30px;
+	
+}

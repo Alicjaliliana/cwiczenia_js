@@ -5,8 +5,10 @@
     "aliceblue <alicja0wojcik@gmail.com>"
   ],
   "description": "",
-  "main": "",
-  "moduleType": [],
+  "main": "portfolio.html",
+  "moduleType": [
+    "node"
+  ],
   "license": "MIT",
   "private": true,
   "ignore": [
@@ -15,5 +17,9 @@
     "bower_components",
     "test",
     "tests"
-  ]
+  ],
+  "dependencies": {
+    "angular-route": "~1.4.8",
+    "bootstrap": "~3.3.6"
+  }
 }

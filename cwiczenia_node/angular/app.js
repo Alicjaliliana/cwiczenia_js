@@ -1,13 +1,16 @@
-var myPortfolio = angular.module('myPortfolio', ['ngRoutes', 'myPortfolioCtrl'];
+var myPrt = angular.module('myPrt', ['ngRoute', 'myImagesCtrl']);
 
-myPortfolio.config['$route', function($route) {
-	$route.when ('/images', {
-		templateUrl: 'partials/images-portfolio.html',
-		controller: 'imagesDetCtrl'
-	}).when('/images/"imageInit' {
-		templateURl: 'partials/image-det.html',
-		controller: 'imageInitCtrl'
-	}).otherwise ({
-		redirectTo: '/images'
-	});
-});
+myPrt.config(['$routeProvider', function($routeProvider) {
+	$routeProvider.
+		when ('/images', {
+			templateUrl: 'partials/images-portfolio.html',
+			controller: 'imagesInitCtrl'
+		}).
+		when('/images/:imageInit', {
+			templateURl: 'partials/images-det.html',
+			controller: 'imagesDetCtrl'
+		}).
+		otherwise ({
+			redirectTo: '/images'
+		});
+	}]);

@@ -1,0 +1,20 @@
+{
+  "name": "mean",
+  "description": "",
+  "main": "server.js",
+  "authors": [
+    "Alicja Wojcik"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/Alicjaliliana/cwiczenia_js",
+  "moduleType": [
+    "node"
+  ],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
