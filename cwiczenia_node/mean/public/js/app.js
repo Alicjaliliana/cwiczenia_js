@@ -10,6 +10,10 @@ MVapp.config(['$routeProvider', function($routeProvider) {
 			templateUrl: '/partials/admin.html',
 			controller: 'submitNewPost'
 		})
+		.when('/:id', {
+			templateUrl: '/partials/details.html',
+			controller: 'detailpost'
+		})
 		.otherwise ({
 			redirectTo: '/'
 		});

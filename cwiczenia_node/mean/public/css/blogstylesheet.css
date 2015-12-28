@@ -1,13 +1,15 @@
 @import url(https://fonts.googleapis.com/css?family=Candal|Alice);
-
+p, h1, h2, h3, h4, h5, h6, li, ul,
+tr, td, .detail {
+	font-family: "Alice", sans;
+}
 ul {
 	padding-left: 0;
 }
 
 li {
-	font-size: 14px;
+	font-size: 16px;
 	list-style: none;
-	font-family: "Alice", sans;
 	margin-bottom: 50px;
 }
 .title {
@@ -19,8 +21,35 @@ li {
 .category {
 	font-size: 11px;
 	text-decoration: italic;
+	margin-bottom: 10px;
 }
 .container {
 	margin-top: 30px;
-	
+}
+.data-input {
+	margin: 10px 5px;
+	padding: 5px;
+}
+.newpost {
+	margin-top: 22px;
+}
+.detail {
+	margin-top: 30px;
+	font-size: 16px;
+}
+.content {
+	text-align: justify;
+}
+.detail .description {
+	margin-bottom: 5px;
+}
+.post, .detail .title, .comment-container .title {
+	border-left: 10px solid #f7475d;
+	padding-left: 20px;
+}
+.detail .title, .comment-container .title {
+	margin-left: -14px;
+}
+.comments {
+	margin: 50px 0;
 }
