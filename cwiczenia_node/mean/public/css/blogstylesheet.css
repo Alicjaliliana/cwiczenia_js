@@ -53,3 +53,10 @@ li {
 .comments {
 	margin: 50px 0;
 }
+.username {
+	font-size: 18px;
+	font-family: 'Candal', sans-serif;
+	margin: 10px 0;
+	border-left: 5px solid #4f32bb;
+	margin-left: 20px;
+}

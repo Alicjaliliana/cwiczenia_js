@@ -1,4 +1,4 @@
-<div class = 'container col-sm-6 col-sm-offset-3'>
+	<div class = 'container col-sm-6 col-sm-offset-3' ng-controller = 'newComment'>
 	<div class = 'col-sm-2 col-sm-offset-10'>
 		<a href = '/#/'>Back</a>
 	</div>
@@ -8,26 +8,29 @@
 		<div class = 'content col-sm-12'>{{post.content}}</div>
 		<div class = 'category col-sm-12'>{{post.category}}</div>
 	</div>
-	<div class = 'comments col-sm-10 col-sm-offset-1' ng-controller = 'newComment'>
+	<div class = 'comments' >
 		<form>
 			<div class = 'col-sm-12 data-input'>
 				<span class = 'col-sm-2'>Username</span>
-				<input type = 'text' class = 'col-sm-10'  ng-model= 'newComment.name'>
+				<input type="text" class="col-sm-10 ng-pristine ng-untouched ng-valid" ng-model="newComment.name">
 			</div>
-			<div class = 'col-sm-12 data-input'>
-				<span class = 'col-sm-2'>Message</span>
-				<textarea class = 'col-sm-10' row = '3' ng-model = 'newComment.content'></textarea>
+			<div class="col-sm-12 data-input">
+				<span class="col-sm-2">Message</span>
+				<textarea class="col-sm-10 ng-pristine ng-untouched ng-valid" row="3" ng-model="newComment.content"></textarea>
 			</div>
-			<div class = 'data-input col-sm-12'>
-				<button class = 'col-sm-3 col-sm-offset-5 btn btn-default' ng-click = 'submitNewComment()'>Submit</button>
+			<div class="data-input col-sm-12">
+				<button class="col-sm-3 col-sm-offset-5 btn btn-default" ng-click="submitNewComment()">Submit</button>
 			</div>
 		</form>	
 	</div>
 	<div class = 'comment-container col-sm-12'>
-		<div class = 'col-sm-12 title'> Comments </div>
-			<div ng-repeat = 'comment in comments'>
-				<div class = 'col-sm-12 title'>{{comment.name}}</div>
-				<div class = 'col-sm-12 content'>{{comment.content}}</div>
+		<div class = 'col-sm-12 title'>Comments</div>
+		<div ng-repeat = 'comment in comments'>
+			<div class = 'col-sm-12 username'>{{comment.name}}</div>
+			<div class = 'co;-sm-12 content'>{{comment.content}}</div>
+			<div class = 'col-sm-12'>
+				<button class = 'col-sm-1 btn btn-danger' ng-click = 'delCom(comment._id)'>Delete</button>
 			</div>
+		</div>
 	</div>
 </div>
