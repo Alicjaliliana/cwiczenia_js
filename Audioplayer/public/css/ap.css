@@ -1,0 +1,135 @@
+@import url(https://fonts.googleapis.com/css?family=Righteous);
+body{
+	margin: 0px;
+}
+/*-------------CONTAINERS-------------*/
+#containers {
+	width: 1480px;
+	max-width: 1480px;
+}
+#roundBlock-container {
+	margin-left: 100px;
+	margin-bottom: 100px;
+	height: 650px;
+	max-height: 650px;
+	width: 1280px;
+	max-width: 1280px;
+	display: flex;
+	/*vertical-align: middle;*/
+	align-items: center;
+	justify-content: center;
+}
+#block-container  {
+	margin: 0 100px ;
+	height: 650px;
+	display: flex;
+	display: -webkit-flex;
+	flex-wrap: wrap;
+	-webkit-align-content: flex-start;
+	align-content: flex-start;
+	margin-bottom: 100px;
+}
+#circles-container{
+	max-width: 800px;
+	max-height: 800px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding-top: 440px;
+	padding-left: 400px;
+	padding-bottom: 210px;
+}
+#menu-left{
+	height: 100%;
+	background-color: #B58A35;
+	vertical-align: top;
+}
+#menu-left, #containers {
+	display: inline-block;
+}
+#ChooseMusicButtons{
+	height: 42%;
+	padding-top: 75px;
+}
+#VisualChangeButtons{
+	height: 265px;
+	background-color:#F1CA0E;
+	vertical-align: bottom;
+	padding-top: 70%;
+}
+
+.button-container {
+	height: 120px;
+	display: block;
+	margin-top: 35px;
+}
+/*--------------VISUAL ELEMENTS--------*/
+.circle {
+	position: absolute;
+	max-width: 650px;
+	max-height: 650px;
+	
+}
+.block {
+	display: inline-block;
+	width: 4px;
+	margin-right: 1px;
+	max-height: 650px;
+
+}
+.roundBlock {
+	position: absolute;
+	max-height: 650px;
+	max-width: 650px;
+	align-items:center;
+}
+
+#audio{
+	margin: 215px 45% 0 45%;
+}
+
+/* ------------BUTTONS-------------*/
+
+button {
+	height: 5px;
+	width: 275px;
+	margin: 0 10px;
+	margin-bottom: 5px;
+	font-family: 'Righteous', cursive;
+	font-size: 14px;
+	background-color: transparent;
+	border: none;
+}
+button:hover  {
+	color: #0078A1;
+}
+#ChooseMusicButtons button {
+	color: #F0CC22;
+}
+.button button  {
+	color: #B58A35;
+}
+.button {
+	margin-bottom: 30px;
+}
+.button, #SimpleColour, #RandomColours, #RoundBlock, #ColourBlocks {
+	display: block;
+}
+.buttonOptions {
+	display: none;
+	margin-left: 97px;
+	margin-top: 20px;
+}
+.smallButton {
+	position: relative;
+	width: 100px;
+	height: 30px;
+	margin: 0 10px 0 0px;
+	font-size: 10px;
+	display: block;
+	color: #9D4005;
+	text-align: center;
+}
+.smallButton:hover {
+	color: #0084B0;
+}
