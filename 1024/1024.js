@@ -1,7 +1,7 @@
 var ROWS = 4;
 var COLUMNS = 4;
 var COLORS = ['lightblue', 'lightblue', 'lightskyblue', 'cornflowerblue', 'slateblue', 'mediumpurple', 'darkorchid', 'orchid', 'plum', 'violet', 'hotpink', 'deeppink', 'red', 'salmon', 'lightcoral', 'lightsalmon', 'tomato', 'chocolate', 'sienna', 'saddlebrown', 'maroon', 'black'];
-var SIZE = ['70px', '70px', '70', "70px", "55px", "55px", "55px", "40px", "40px", "40px", '25px', '25px', '25px', '25px', '10px', '10px'];
+var SIZE = ['70px', '70px', '70px', "70px", "55px", "55px", "55px", "40px", "40px", "40px", '25px', '25px', '25px', '25px', '10px', '10px'];
 var SCORE = 0;
 var ARROWS = [];
 
