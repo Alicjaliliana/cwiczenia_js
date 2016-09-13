@@ -394,55 +394,13 @@ window.addEventListener('load',function() {
 	FadCircBBorder.onclick = function () {
 		CirclesBBorder();
 	}
+		
+	for (var i = 0; i < music.length; i++) (function(i){
+		var TrackId = document.getElementById(MusicIDs[i]);
+		TrackId.onclick = function () {
+			audio.src = music[i];
+			audio.play();
+		}
+	})(i);
 	
-	var EEdEddEddy = document.getElementById(MusicIDs[0]);
-	EdEddEddy.onclick = function (){
-		audio.src = music[0];
-		audio.play()
-	}
-	var BlankSpace = document.getElementById(MusicIDs[1]);
-	BlankSpace.onclick = function (){
-		audio.src = music[1];
-		audio.play()
-	}
-	var DareLaLaLa = document.getElementById(MusicIDs[2]);
-	DareLaLaLa.onclick = function (){
-		audio.src = music[2];
-		audio.play()
-	}
-	var Fairyland = document.getElementById(MusicIDs[3]);
-	Fairyland.onclick = function (){
-		audio.src = music[3];
-		audio.play()
-	}
-	var FixedAtZero = document.getElementById(MusicIDs[4]);
-	FixedAtZero.onclick = function (){
-		audio.src = music[4];
-		audio.play()
-	}
-	var GetJinxed = document.getElementById(MusicIDs[5]);
-	GetJinxed.onclick = function (){
-		audio.src = music[5];
-		audio.play()
-	}
-	var Omnos = document.getElementById(MusicIDs[6]);
-	Omnos.onclick = function (){
-		audio.src = music[6];
-		audio.play()
-	}
-	var Riot = document.getElementById(MusicIDs[7]);
-	Riot.onclick = function (){
-		audio.src = music[7];
-		audio.play()
-	}
-	var Smile = document.getElementById(MusicIDs[8]);
-	Smile.onclick = function (){
-		audio.src = music[8];
-		audio.play()
-	}
-	var Allatonce = document.getElementById(MusicIDs[9]);
-	Allatonce.onclick = function (){
-		audio.src = music[9];
-		audio.play()
-	}
 });
